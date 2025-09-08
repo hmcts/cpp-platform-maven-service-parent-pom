@@ -1,0 +1,28 @@
+#!/bin/bash
+
+fatal() {
+cat <<END
+ERROR: $*
+
+Provides custom repository specific hook for the CI event "fixup-versions"
+Usage: fixup-versions ci
+
+Where:
+  ci: Mandatory fixed parameter that tells the hook its not being executed accidentally
+END
+exit 1
+}
+
+hook_dir=$(dirname "$0")
+xmlstarlet_bin=$(which xmlstarlet)
+
+[[ $# -ne 1 ]] && fatal "Invalid parameters or none specified"
+[[ $1 != ci ]] && fatal "Must use 'ci' as first parameter"
+[[ ! -x $xmlstarlet_bin ]] && fatal "xmlstarlet not found, needed for this hook"
+
+# Use XML Starlet to set the property value of cpp.access-control.version to the release version of the pom
+$xmlstarlet_bin ed -P -L -u "//_:project/_:properties/_:cpp.service-parent-pom.version" -x "//_:project/_:version/text()" "$hook_dir/../pom.xml"
+
+# Its up to the caller to commit this or not.
+exit 0
+
