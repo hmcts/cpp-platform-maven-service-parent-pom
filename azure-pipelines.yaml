@@ -25,15 +25,21 @@ pool:
     - identifier -equals centos8-j17
 
 variables:
-  sonarqubeProject: "uk.gov.moj.cpp.common:common-bom"
+  sonarqubeProject: "uk.gov.moj.cpp.common:service-parent-pom"
 
 stages:
-  - ${{ if eq(variables['Build.Reason'], 'PullRequest') }}:
+  - ${{ if and(eq(variables['Build.Repository.Name'], 'hmcts/cpp-platform-maven-service-parent-pom'), eq(variables['Build.Reason'], 'PullRequest')) }}:
+      - template: pipelines/context-verify.yaml@cppAzureDevOpsTemplates
+        parameters:
+          sonarqube_project: ${{ variables['sonarqubeProject'] }}
+          sonarQubeType: 'sonarQubeAKS'
+
+  - ${{ if and(ne(variables['Build.Repository.Name'], 'hmcts/cpp-platform-maven-service-parent-pom'), eq(variables['Build.Reason'], 'PullRequest')) }}:
       - template: pipelines/platform-verify.yaml@cppAzureDevOpsTemplates
 
   - ${{ if eq(variables['Build.Reason'], 'Manual') }}:
       - template: pipelines/library-validation.yaml@cppAzureDevOpsTemplates
         parameters:
-          serviceName: 'commonbom'
+          serviceName: 'serviceparentpom'
           RUN_RELEASE: ${{ parameters.RUN_RELEASE }}
           JOB_TYPE: 'library'
