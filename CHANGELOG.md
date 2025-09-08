@@ -7,63 +7,107 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-# [17.102.7] - 2025-06-13
-### Changed
-- Release rebased cpp-platform-libraries
+# [17.103.2] - 2025-08-28
+### Change
+- Update cpp-platform-libraries to 17.103.2 to include CCT-1530 changes
 
-# [17.102.6] - 2025-04-28
+
+# [17.103.1] - 2025-08-18
+- Update event-store 17.103.1 for:
+  - Refactoring of error handling to make database access more efficient. These include:
+    - Delete of stream errors sql no longer cascades to delete any orphaned hashes. Instead, orphaned hashes are found and deleted if necessary
+    - Locking of stream_status table when publishing events, no longer calls error tables updates on locking errors
+    - Streams no longer marked as fixed by default and will only mark as fixed if stream previously broken
+    - We now check that any new error not a repeat of a previous error before updating stream_error tables.
+      - If the error is different, we now lock stream_status and updates error details.
+      - If the error is same, `markSameErrorHappened(...)` only updates stream_status.updated_at.
+    - We now execute the lock of steam_status table before calculating stream statistics
+
+# [17.103.0] - 2025-07-16
+### Added
+- Add micrometer metrics
+- Micrometer metrics are now bootstrapped in cpp-platform-libraries at application startup using `MicrometerMetricsWildflyExtension`
+### Changed
+- Release JMX command execution to work with selfhealing feature (via event-store)
+- Release file-service extraction changes (via framework-libraries)
+- Make framework REST endpoints available to contexts
+- Azure metrics registered with global tags and factories
+- Add framework rest endpoint to fetch streams by errorHash
+- Azure metrics registry is no longer bootstrapped if metrics disabled
+- Update cpp.common-bom to Include netty-bom instead of individual netty library versions.
+- DD-38618 DLRM changes related to unified search (cpp-platform-libraries)
+- Update to framework `D` `17.103.x`:
+  - Insert into stream_buffer table during event publishing is now idempotent
+  - Run each event sent to the event listeners in its own transaction
+  - Update the `stream_status` table with `latest_known_position`
+  - Mark stream as 'up_to_date' when all events from event-buffer successfully processed
+  - New column `latest_known_position` in `stream_status table`
+  - New column `is_up_to_date` in `stream_status table`
+  - New liquibase scripts to update stream_status table
+  - New SubscriptionManager class `NewSubscriptionManager`to handle the new way of processing events
+  - New replacement StreamStatusRepository class for data access of stream_status table
+  - Change name of jndi value for self-healing from `event.error.handling.enabled` to `event.stream.self.healing.enabled`
+  - New REST endpoint to fetch list of active errors
+  - New REST endpoint to fetch stream errors by streamId and errorId
+  - Fetch streams by streamId and hasError
+  - Extended RestPoller to include custom PollInterval implementation and introduced FibonacciPollWithStartAndMax class
+
+## [17.102.6] - 2025-04-28
 ### Changed
 - Update cpp.common-bom to Include netty-bom instead of individual netty library versions.
 
-# [17.102.5] - 2025-04-17
+## [17.102.5] - 2025-04-17
 ### Changed
 - Update framework to 17.102.2 for:
-  - Extended RestPoller to include custom PollInterval implementation and introduced FibonacciPollWithStartAndMax class
+    - Extended RestPoller to include custom PollInterval implementation and introduced FibonacciPollWithStartAndMax class
 - DD-38618 DLRM changes related to unified search (cpp-platform-libraries)
 
-# [17.102.4] - 2025-03-18
+## [17.102.4] - 2025-03-18
 ### Changed
 - Update event-store to 17.102.2 for:
-  - Removal of error handling from BackwardsCompatibleSubscriptionManager
-- Automatically sync up cpp.platform-libraries.version property value with pom version (in cpp-platform-libraries)  
+    - Removal of error handling from BackwardsCompatibleSubscriptionManager
+- Automatically sync up cpp.platform-libraries.version property value with pom version (in cpp-platform-libraries)
 
-# [17.102.3] - 2025-03-18
+## [17.102.3] - 2025-03-18
 ### Changed
 - Update event-store to 17.102.1 for:
-  - - Oversized messages are now logged as `WARN` rather than `ERROR`
+    - - Oversized messages are now logged as `WARN` rather than `ERROR`
 - Update cpp-platform-maven-common-bom to 17.102.1
 
-# [17.102.2] - 2025-03-10
+## [17.102.2] - 2025-03-10
 ### Changed
 - Update event-store to 17.102.0-M7 for:
-  - Stream error handling now uses same database connection for all error handling database updates
-  - Failing retries of a previously stored error no longer update the error tables and only the first failure of that event is recorded
-  - Renamed `component_name` column in `stream_error` to `component`
-  - Streams no longer marked as fixed if events remain stuck in the stream-buffer
-  - Added new `updated_at` column to `stream_status` table
+    - Stream error handling now uses same database connection for all error handling database updates
+    - Failing retries of a previously stored error no longer update the error tables and only the first failure of that event is recorded
+    - Renamed `component_name` column in `stream_error` to `component`
+    - Streams no longer marked as fixed if events remain stuck in the stream-buffer
+    - Added new `updated_at` column to `stream_status` table
 
-# [17.102.1] - 2025-02-28
+## [17.102.1] - 2025-02-28
 ### Changed
 - Update event-store to 17.102.0-M5 for:
-  - The columns `stream_id`, `component_name` and `source` on the `stream_error` table are now unique when combined
-  - Inserts into `stream_error` now `DO NOTHING` if a row with the same `stream_id`, `component_name` and `source` on the `stream`error` already exists
-  - Inserts into `stream_error` are therefore idempotent
-  - No longer removing stream_errors before inserting a new error, as the insert is now idempotent
+    - The columns `stream_id`, `component_name` and `source` on the `stream_error` table are now unique when combined
+    - Inserts into `stream_error` now `DO NOTHING` if a row with the same `stream_id`, `component_name` and `source` on the `stream`error` already exists
+    - Inserts into `stream_error` are therefore idempotent
+    - No longer removing stream_errors before inserting a new error, as the insert is now idempotent
 
 ## [17.102.0] - 2025-02-27
 ### Added
 - Error handling for event streams:
-  - New table `stream_error` in viewstore
-  - Exceptions thrown during event processing now stored in stream_error table
-  - New nullable column `stream_error_id` in stream status table with constraint on stream_error table
-  - New nullable column `stream_error_position` in stream status table
-  - Exception stacktraces are parsed to find entries into our code and stored in stream_error table
-  - New Interceptor `EntityManagerFlushInterceptor` for EVENT_LISTENER component that will always flush the Hibernate EntityManager to commit viewstore changes to the database
-  - New JNDI value `event.error.handling.enabled` with default value of `false` to enable/disable error handling for events
+    - New table `stream_error` in viewstore
+    - Exceptions thrown during event processing now stored in stream_error table
+    - New nullable column `stream_error_id` in stream status table with constraint on stream_error table
+    - New nullable column `stream_error_position` in stream status table
+    - Exception stacktraces are parsed to find entries into our code and stored in stream_error table
+    - New Interceptor `EntityManagerFlushInterceptor` for EVENT_LISTENER component that will always flush the Hibernate EntityManager to commit viewstore changes to the database
+    - New JNDI value `event.error.handling.enabled` with default value of `false` to enable/disable error handling for events
 ### Changed
 - Bump version to 17.102.x
 - Optimised SnapshotJdbcRepository queries to fetch only required data
 
+## [17.101.1] - 2025-04-14
+### Changed
+-- updated to include sourceSystemReference into unified search part of DLRM
 
 ## [17.101.0] - 2025-01-29
 ### Changed
