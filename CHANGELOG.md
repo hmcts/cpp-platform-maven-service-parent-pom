@@ -7,6 +7,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+# [17.103.3] - 2025-09-11
+### Change
+- Update cpp-platform-libraries to 17.103.3
+
 # [17.103.2] - 2025-08-28
 ### Change
 - Update cpp-platform-libraries to 17.103.2 to include CCT-1530 changes
