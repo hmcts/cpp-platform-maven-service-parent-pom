@@ -7,6 +7,41 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+# [17.104.0-M1] - 2025-09-18
+### Changed
+- Update to framework 17.104.x for new event publishing mechanism:
+  - New timer bean worker and database access for linking events (previous and current event numbers in event_log table)
+  - previous_event_number and event_number moved to event_log table
+  - Events now exist solely in event_log table, removing the need for published_event
+  - Publish queue now reads directly from event_log table and ignores published_event
+  - `PublishedEvent` renamed to `LinkedEvent` and fetched directly from event_log table
+  - published_event table to be deprecated
+  - Runs of `EventLinkingTimerBean` now configured using new jndi values:
+    - `event.linking.worker.start.wait.milliseconds`
+    - `event.linking.worker.timer.interval.milliseconds`
+    - `event.linking.worker.time.between.runs.milliseconds`
+  - Runs of `EventPublishingTimerBean` now configured using new jndi values:
+    - `event.publishing.worker.start.wait.milliseconds`
+    - `event.publishing.worker.timer.interval.milliseconds`
+    - `event.publishing.worker.time.between.runs.milliseconds`
+- New jndi values are no longer global can can be configured per context
+- Locking of stream_status table when publishing events, no longer calls error tables updates on locking errors
+### Removed
+- Removed old jndi values used to configure publishing (and replaced with the above)
+  - `pre.publish.start.wait.milliseconds`
+  - `pre.publish.timer.interval.milliseconds`
+  - `pre.publish.timer.max.runtime.milliseconds`
+  - `event.dequer.start.wait.milliseconds`
+  - `event.dequer.timer.interval.milliseconds`
+  - `event.dequer.timer.max.runtime.milliseconds`
+- Removed JMX commands:
+  - Removed `REBUILD` jmx command and associated classes
+  - Removed `VERIFY_REBUILD` jmx command and associated classes
+  - Removed `ENABLE_PUBLISHING` jmx command and associated classes
+  - Removed `DISABLE_PUBLISHING` jmx command and associated classes
+  - Removed `VALIDATE_EVENTS` jmx command and associated classes
+
+
 # [17.103.0] - 2025-07-16
 ### Added
 - Add micrometer metrics
