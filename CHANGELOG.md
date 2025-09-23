@@ -7,6 +7,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+# [17.104.0-M2] - 2025-09-23
+### Changed
+- Update event-store to 17.104.0-M3 for:
+  - Removed `SKIP LOCKED` when querying for earliest unlinked event in event_log table
+  - Removed `pre_publish_queue` table from event_store database
+
 # [17.104.0-M1] - 2025-09-18
 ### Changed
 - Update to framework 17.104.x for new event publishing mechanism:
