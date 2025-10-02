@@ -6,6 +6,9 @@ on [Keep a CHANGELOG](http://keepachangelog.com/).
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+# [17.104.0-M3] - 2025-09-23
+### Changed
+- Update event-store to 17.104.0-M4 for refactor of event publishing
 
 # [17.104.0-M2] - 2025-09-23
 ### Changed
