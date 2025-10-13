@@ -6,6 +6,11 @@ on [Keep a CHANGELOG](http://keepachangelog.com/).
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+# [17.104.0-M4] - 2025-10-13
+### Changed
+- Used JsonFactory instead of Json.create methods as per https://github.com/jakartaee/jsonp-api/issues/154
+
 # [17.104.0-M3] - 2025-09-23
 ### Changed
 - Update event-store to 17.104.0-M4 for refactor of event publishing
