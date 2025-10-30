@@ -7,6 +7,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+# [17.104.0-M7] - 2025-10-30
+### Changed
+- Update framework-libraries to 17.104.0-M6
+- Update microservice-framework to 17.104.0-M4
+- Update event-store to 17.104.0-M9
+- Refactor JsonObject usages to more proper api
+- Fix HttpClient lifecycle.
+
 # [17.104.0-M6] - 2025-10-24
 ### Changed
 - Update event-store to 17.104.0-M8 for:
