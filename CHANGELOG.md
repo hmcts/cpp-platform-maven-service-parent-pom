@@ -7,7 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-# [17.103.4-M1] - 2025-11-05
+# [17.103.4] - 2025-11-06
 ### Changed
 - Update event-store to 17.103.3-M1 for:
   - ReplaySingleEvent JMX commands can now take an optional commandRuntimeString of the event source name
