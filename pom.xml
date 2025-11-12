@@ -9,7 +9,7 @@
 
     <groupId>uk.gov.moj.cpp.common</groupId>
     <artifactId>service-parent-pom</artifactId>
-    <version>17.103.7-M1</version>
+    <version>17.103.7-M2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>CPP Service Parent POM</name>
