@@ -6,7 +6,15 @@ on [Keep a CHANGELOG](http://keepachangelog.com/).
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-
+# [17.104.0-M9] - 2025-11-13
+### Changed
+- Update event-store to 17.104.0-M10 for:
+  - TransactionHandler will now not roll back if transaction is `STATUS_MARKED_ROLLBACK` or `STATUS_ROLLING_BACK`
+  - Save of ProcessedEvent will now throw ProcessedEventTrackingException if eventNumber, source or component are not unique
+  - ReplaySingleEvent JMX commands can now take an optional commandRuntimeString of the component name
+    to work with MI contexts
+  - Configure timeouts for releasing transactional advisory locks in event linking
+  
 # [17.104.0-M8] - 2025-11-03
 ### Changed
 - Update platform-libraries to 17.104.0-M8
