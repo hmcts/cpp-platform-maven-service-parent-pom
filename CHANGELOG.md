@@ -6,16 +6,6 @@ on [Keep a CHANGELOG](http://keepachangelog.com/).
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-# [17.103.7-M2] - 2025-11-12
-### Changed
-- Update event-store to 17.103.6-M2 for:
-  - EntityManagerFlushInterceptor will now only flush the EntityManager if a transaction is active
-  - TransactionHandler will not roll back if transaction status is `STATUS_NO_TRANSACTION`
-
-# [17.103.7-M1] - 2025-11-12
-### Changed
-- Update event-store to 17.103.6-M1 for:
-  - Save of ProcessedEvent will now throw ProcessedEventTrackingException if eventNumber, source or component are not unique
 
 # [17.103.5] - 2025-11-06
 ### Changed
