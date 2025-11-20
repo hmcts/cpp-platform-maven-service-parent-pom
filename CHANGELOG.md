@@ -7,6 +7,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+# [17.103.8-M1] - 2025-11-20
+### Changed
+- Used JsonFactory instead of Json.create methods
+- Refactor JsonObject usages to more proper api
+- Fix HttpClient lifecycle.
+
 # [17.103.5] - 2025-11-06
 ### Changed
 - Update event-store to 17.103.3-M1 for:
