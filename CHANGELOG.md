@@ -6,9 +6,16 @@ on [Keep a CHANGELOG](http://keepachangelog.com/).
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-# [17.104.0-M9] - 2025-11-13
+
+# [17.104.0-M9] - 2025-11-26
 ### Changed
-- Update event-store to 17.104.0-M10 for:
+- Update event-store to 17.104.0-M12 for:
+  - Catchup will now ignore events on inactive streams and events that are not marked as `HEALTHY`
+  - EntityManagerFlushInterceptor will now only flush the EntityManager if a transaction is active
+  - TransactionHandler will now roll back except if transaction is `STATUS_NO_TRANSACTION`
+  - The `is_published` flag in event_log table is now true by default.
+  - `is_published` flag in event_log now set to false when the event is first inserted. Will be set
+    to true once publishing has sent the event to the event topic
   - TransactionHandler will now not roll back if transaction is `STATUS_MARKED_ROLLBACK` or `STATUS_ROLLING_BACK`
   - Save of ProcessedEvent will now throw ProcessedEventTrackingException if eventNumber, source or component are not unique
   - ReplaySingleEvent JMX commands can now take an optional commandRuntimeString of the component name
