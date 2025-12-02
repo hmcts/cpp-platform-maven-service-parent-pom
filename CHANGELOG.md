@@ -7,6 +7,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+# [17.104.0-M10] - 2025-12-02
+### Changed
+- Update event-store to 17.104.0-M13 with new Liquibase changesets.
+
 # [17.104.0-M9] - 2025-11-26
 ### Changed
 - Update event-store to 17.104.0-M12 for:
