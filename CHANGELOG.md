@@ -7,6 +7,20 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+# [17.103.8] - 2025-12-09
+### Changed
+- Used JsonFactory instead of Json.create methods
+- Refactor JsonObject usages to more proper api
+- Fix HttpClient lifecycle.
+- EntityManagerFlushInterceptor will now only flush the EntityManager if a transaction is active
+- Updated dependencues
+  - cp-file-service to 17.103.2
+  - framework-libraries to 17.103.1
+  - microservice-framework to 17.103.2
+  - event-store to 17.103.7
+### Fixed
+- Remove rogue event-store dependencies from micrometer module
+
 # [17.103.5] - 2025-11-06
 ### Changed
 - Update event-store to 17.103.3-M1 for:
