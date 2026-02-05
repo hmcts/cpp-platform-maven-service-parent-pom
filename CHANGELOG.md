@@ -7,6 +7,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+# [17.105.0-M1] - 2026-02-05
+### Changed
+- Bumped version to 17.105.0-M1 for new framework F version
+- Framework updated to version 17.105.0-M3
+- Event-store updated to version 17.105.0-M6
+
 # [17.104.0] - 2025-12-16
 ### Changed
 - Update event-store to 17.104.0-M13 with new Liquibase changesets.
