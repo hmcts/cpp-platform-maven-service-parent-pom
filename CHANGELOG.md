@@ -7,12 +7,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-# [17.104.0-M10] - 2025-12-02
+# [17.104.0] - 2025-12-16
 ### Changed
 - Update event-store to 17.104.0-M13 with new Liquibase changesets.
-
-# [17.104.0-M9] - 2025-11-26
-### Changed
 - Update event-store to 17.104.0-M12 for:
   - Catchup will now ignore events on inactive streams and events that are not marked as `HEALTHY`
   - EntityManagerFlushInterceptor will now only flush the EntityManager if a transaction is active
@@ -25,9 +22,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
   - ReplaySingleEvent JMX commands can now take an optional commandRuntimeString of the component name
     to work with MI contexts
   - Configure timeouts for releasing transactional advisory locks in event linking
-  
-# [17.104.0-M8] - 2025-11-03
-### Changed
 - Update platform-libraries to 17.104.0-M8
 - Update event-store to 17.104.0-M10 for:
   - Added [framework E rollout and rollback SQLs document](event-sourcing/event-repository/event-repository-liquibase/docs/framework-E-sqls.md)
@@ -36,41 +30,21 @@ This project adheres to [Semantic Versioning](http://semver.org/).
   - Refactor JsonObject usages to more proper api
   - Fix HttpClient lifecycle.
   - published_events insertion moved to EventNumberLinker from LinkedEventPublisher
-
-# [17.104.0-M7] - 2025-10-30
-### Changed
 - Update framework-libraries to 17.104.0-M6
 - Update microservice-framework to 17.104.0-M4
 - Update event-store to 17.104.0-M9
 - Refactor JsonObject usages to more proper api
 - Fix HttpClient lifecycle.
-
-# [17.104.0-M6] - 2025-10-24
-### Changed
 - Update event-store to 17.104.0-M8 for:
   - Catchup now calculates previousEventNumber for each event from the previous row in
   - Catchup can now be run with the id of the event you wish to run catchup from. Catchup
     the event_log table rather than the previous_event_number column.
-
-# [17.104.0-M5] - 2025-10-15
 - Update event-store to 17.104.0-M5 to add event publishing compatibility mode
-- 
-# [17.104.0-M4] - 2025-10-13
-### Changed
 - Used JsonFactory instead of Json.create methods as per https://github.com/jakartaee/jsonp-api/issues/154
-
-# [17.104.0-M3] - 2025-09-23
-### Changed
 - Update event-store to 17.104.0-M4 for refactor of event publishing
-
-# [17.104.0-M2] - 2025-09-23
-### Changed
 - Update event-store to 17.104.0-M3 for:
   - Removed `SKIP LOCKED` when querying for earliest unlinked event in event_log table
   - Removed `pre_publish_queue` table from event_store database
-
-# [17.104.0-M1] - 2025-09-18
-### Changed
 - Update to framework 17.104.x for new event publishing mechanism:
   - New timer bean worker and database access for linking events (previous and current event numbers in event_log table)
   - previous_event_number and event_number moved to event_log table
@@ -88,6 +62,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
     - `event.publishing.worker.time.between.runs.milliseconds`
 - New jndi values are no longer global can can be configured per context
 - Locking of stream_status table when publishing events, no longer calls error tables updates on locking errors
+
 ### Removed
 - Removed old jndi values used to configure publishing (and replaced with the above)
   - `pre.publish.start.wait.milliseconds`
@@ -102,7 +77,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
   - Removed `ENABLE_PUBLISHING` jmx command and associated classes
   - Removed `DISABLE_PUBLISHING` jmx command and associated classes
   - Removed `VALIDATE_EVENTS` jmx command and associated classes
-
 
 # [17.103.0] - 2025-07-16
 ### Added
