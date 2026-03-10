@@ -27,7 +27,7 @@
         <enforcer.skipLatestCoreDomainRule>true</enforcer.skipLatestCoreDomainRule>
         <enforcer.skipLatestServiceParentPomRule>true</enforcer.skipLatestServiceParentPomRule>
 
-        <!-- Going forward, all services will need to supply a value for this property.  Intentionally left blank-->
+        <!-- Going forward, all services will need to supply a value for this property.  Intentionally left blank -->
         <cpp.service.name/>
 
         <cpp.scm.project>cpp.platform.maven.service-parent-pom</cpp.scm.project>
