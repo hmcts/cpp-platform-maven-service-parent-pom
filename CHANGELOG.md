@@ -7,6 +7,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+# [17.105.0-M7] - 2026-03-013
+### Changed
+- Update framework and event-store for:
+  - The JMX commands `CATCHUP`, `INDEXER_CATCHUP`, `REPLAY_EVENT_TO_EVENT_INDEXER`,
+    `REPLAY_EVENT_TO_EVENT_LISTENER` and `VERIFY_CATCHUP` are now disabled if
+    the pull mechanism is enabled. Calling them will result in a command not found
+
 # [17.105.0-M6] - 2026-03-12
 - Update microservice-framework to 17.105.0-M5 for various bug fixes and improvements
 - Update event-store to 17.105.0-M13 for various bug fixes and improvements
