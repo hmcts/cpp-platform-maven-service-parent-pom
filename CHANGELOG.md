@@ -6,8 +6,11 @@ on [Keep a CHANGELOG](http://keepachangelog.com/).
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-
-# [17.105.0-M7] - 2026-03-013
+# [17.105.0-M10] - 2026-03-18
+- Update event-store to 17.105.0-M15 for:
+  - Batch event linking: `EventNumberLinker` now links N events per JTA transaction using JDBC `executeBatch()`,
+    configurable via JNDI `event.linking.worker.batch.size` (default 10)
+# [17.105.0-M7] - 2026-03-13
 ### Changed
 - Update framework and event-store for:
   - The JMX commands `CATCHUP`, `INDEXER_CATCHUP`, `REPLAY_EVENT_TO_EVENT_INDEXER`,
