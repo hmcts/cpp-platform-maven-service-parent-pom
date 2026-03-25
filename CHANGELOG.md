@@ -6,7 +6,7 @@ on [Keep a CHANGELOG](http://keepachangelog.com/).
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-### [17.104.1-M2]  - 2026-03-23
+### [17.104.1]  - 2026-03-25
 ## Added
 - Update platform-libraries to 17.104.1-M2
 - Update event-store to 17.104.1-M2 for:
@@ -14,7 +14,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
     - event.linking.worker.notified (linking)
     - event.publishing.worker.notified (publishing)
   - Bug fixes: dead notifier thread recovery, submit() failure handling
-# [17.104.1-M1] - 2026-03-17
 ### Changed
 - Update platform-libraries to 17.104.1-M1
 - Update event-store to 17.104.1-M1 for:
