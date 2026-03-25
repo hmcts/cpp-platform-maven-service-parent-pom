@@ -7,7 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-# [17.103.9-M6] - 2026-03-24
+# [17.103.9] - 2026-03-24
 ## Changed
 - event-store bumped to 17.103.8-M2 to Notification-based event linking and publishing via CDI events, enabled via JNDI:
   - pre.publish.worker.notified (linking)
