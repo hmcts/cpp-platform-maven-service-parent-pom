@@ -6,6 +6,16 @@ on [Keep a CHANGELOG](http://keepachangelog.com/).
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+# [17.105.0-M12] - 2026-03-30
+- Update event-store to 17.105.0-M18 for:
+  - Renamed JNDI properties
+    - `stream.processing.max.event.retries`
+    - `stream.processing.retry.delay.milliseconds`
+    - `stream.processing.retry.delay.multiplier`
+  - Changed the new `catchup` rest endpoint on `<context-name>/internal/reset-stream-retry-count` from an http `GET` to an http `PUT`
+- Update platform-libraries to 17.105.0-M9 for:
+  - framework-stream-rest-resources dependency is added to expose `/internal` endpoints
+
 # [17.105.0-M11] - 2026-03-24
 - Update platform-libraries to 17.105.0-M8
 - Update event-store to 17.105.0-M16 for:
