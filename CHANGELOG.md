@@ -6,6 +6,12 @@ on [Keep a CHANGELOG](http://keepachangelog.com/).
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+# [17.105.0-M13] - 2026-04-02
+### Changed
+- Update microservice-framework to 17.105.0-M6 and event-store to 17.105.0-M19 for:
+  - Stream selection queries now pick up errored streams that have no `stream_error_retry` entry instead of leaving them permanently stuck
+
 # [17.105.0-M12] - 2026-03-30
 - Update event-store to 17.105.0-M18 for:
   - Renamed JNDI properties
