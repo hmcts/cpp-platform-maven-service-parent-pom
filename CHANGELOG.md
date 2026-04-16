@@ -25,6 +25,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
   - Batch event linking: `EventNumberLinker` now links N events per JTA transaction using JDBC `executeBatch()`,
     configurable via JNDI `event.linking.worker.batch.size` (default 10)
 
+## [21.0.0-SNAPSHOT] - 2026-04-14
+### Changed
+- Bumped version to `21.0.0-SNAPSHOT` for Java 21 / WildFly 34 migration
+- Updated parent `cpp-platform-libraries-parent-pom` to `21.0.0-SNAPSHOT`
+
 # [17.105.0-M13] - 2026-04-02
 ### Changed
 - Update microservice-framework to 17.105.0-M6 and event-store to 17.105.0-M19 for:
