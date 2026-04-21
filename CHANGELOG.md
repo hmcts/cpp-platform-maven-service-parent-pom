@@ -25,6 +25,71 @@ This project adheres to [Semantic Versioning](http://semver.org/).
   - Batch event linking: `EventNumberLinker` now links N events per JTA transaction using JDBC `executeBatch()`,
     configurable via JNDI `event.linking.worker.batch.size` (default 10)
 
+## [21.0.0-SNAPSHOT] - 2026-04-14
+### Changed
+- Bumped version to `21.0.0-SNAPSHOT` for Java 21 / WildFly 34 migration
+- Updated parent `cpp-platform-libraries-parent-pom` to `21.0.0-SNAPSHOT`
+
+# [17.105.0-M13] - 2026-04-02
+### Changed
+- Update microservice-framework to 17.105.0-M6 and event-store to 17.105.0-M19 for:
+  - Stream selection queries now pick up errored streams that have no `stream_error_retry` entry instead of leaving them permanently stuck
+
+# [17.105.0-M12] - 2026-03-30
+- Update event-store to 17.105.0-M18 for:
+  - Renamed JNDI properties
+    - `stream.processing.max.event.retries`
+    - `stream.processing.retry.delay.milliseconds`
+    - `stream.processing.retry.delay.multiplier`
+  - Changed the new `catchup` rest endpoint on `<context-name>/internal/reset-stream-retry-count` from an http `GET` to an http `PUT`
+- Update platform-libraries to 17.105.0-M9 for:
+  - framework-stream-rest-resources dependency is added to expose `/internal` endpoints
+
+# [17.105.0-M11] - 2026-03-24
+- Update platform-libraries to 17.105.0-M8
+- Update event-store to 17.105.0-M16 for:
+  - Notification-based event linking and publishing via CDI events, enabled via JNDI:
+    - event.linking.worker.notified (linking)
+    - event.publishing.worker.notified (publishing)
+    - event.discovery.notified (discovery)
+    - stream.processing.discovery.notified (processing)
+# [17.105.0-M10] - 2026-03-18
+- Update event-store to 17.105.0-M15 for:
+  - Batch event linking: `EventNumberLinker` now links N events per JTA transaction using JDBC `executeBatch()`,
+    configurable via JNDI `event.linking.worker.batch.size` (default 10)
+# [17.105.0-M7] - 2026-03-13
+### Changed
+- Update framework and event-store for:
+  - The JMX commands `CATCHUP`, `INDEXER_CATCHUP`, `REPLAY_EVENT_TO_EVENT_INDEXER`,
+    `REPLAY_EVENT_TO_EVENT_LISTENER` and `VERIFY_CATCHUP` are now disabled if
+    the pull mechanism is enabled. Calling them will result in a command not found
+
+# [17.105.0-M6] - 2026-03-12
+- Update microservice-framework to 17.105.0-M5 for various bug fixes and improvements
+- Update event-store to 17.105.0-M13 for various bug fixes and improvements
+
+# [17.105.0-M5] - 2026-03-05
+- Update event-store to 17.105.0-M11 for:
+  - Demand-driven worker scaling: StreamProcessingCoordinator spawns workers based on stream_status demand
+  - Extract session-level advisory lock handling into StreamSessionLockManager, see [stream-processing-advisory-locks-summary](doc/stream-processing-advisory-locks-summary.md) for more details
+
+# [17.105.0-M4] - 2026-02-18
+### Changed
+- Update event-store to 17.105.0-M8
+
+# [17.105.0-M2] - 2026-02-06
+### Changed
+- Update event-store to 17.105.0-M7 for:
+  - Introduce concurrency to stream processing through JNDI value 'stream.processing.max.workers'
+  - Continue processing next stream on error of current stream processing
+  - Removed test-utils-core.jar from the main classpath
+
+# [17.105.0-M1] - 2026-02-05
+### Changed
+- Bumped version to 17.105.0-M1 for new framework F version
+- Framework updated to version 17.105.0-M3
+- Event-store updated to version 17.105.0-M6
+
 # [17.104.0] - 2025-12-16
 ### Changed
 - Update event-store to 17.104.0-M13 with new Liquibase changesets.

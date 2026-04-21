@@ -3,13 +3,13 @@
     <parent>
         <groupId>uk.gov.moj.platform.libraries</groupId>
         <artifactId>platform-libraries-parent-pom</artifactId>
-        <version>17.104.2</version>
+        <version>21.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>uk.gov.moj.cpp.common</groupId>
     <artifactId>service-parent-pom</artifactId>
-    <version>17.104.3-SNAPSHOT</version>
+    <version>21.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>CPP Service Parent POM</name>
@@ -32,7 +32,7 @@
 
         <cpp.scm.project>cpp.platform.maven.service-parent-pom</cpp.scm.project>
 
-        <cpp.service-common-resources.version>17.10.1</cpp.service-common-resources.version>
+        <cpp.service-common-resources.version>21.0.0-SNAPSHOT</cpp.service-common-resources.version>
         <activiti.library.version>1.3.1</activiti.library.version>
 
     </properties>
@@ -89,7 +89,13 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
                     <configuration>
-                        <packagingExcludes>WEB-INF/web.xml</packagingExcludes>
+                        <!-- Exclude web.xml (not required for Jakarta EE) and RESTEasy server JARs
+                             that WildFly provides via its own modules. Bundling RESTEasy in
+                             WEB-INF/lib prevents WildFly's jaxrs subsystem from activating.
+                             Also exclude spring-webmvc which is a transitive dep of activiti-spring
+                             but contains JSP tag classes referencing javax.servlet.jsp which does
+                             not exist in WildFly 32 (Jakarta EE 10). -->
+                        <packagingExcludes>WEB-INF/web.xml,WEB-INF/lib/resteasy-core-*.jar,WEB-INF/lib/resteasy-core-spi-*.jar,WEB-INF/lib/resteasy-jackson-provider-*.jar,WEB-INF/lib/resteasy-multipart-provider-*.jar,WEB-INF/lib/resteasy-servlet-initializer-*.jar,WEB-INF/lib/resteasy-jaxb-provider-*.jar,WEB-INF/lib/jakarta.ws.rs-api-*.jar,WEB-INF/lib/spring-webmvc-*.jar</packagingExcludes>
                         <!-- Java EE 7 doesn't require web.xml, Maven needs to catch up! -->
                         <failOnMissingWebXml>false</failOnMissingWebXml>
                         <webResources>
@@ -416,6 +422,8 @@
                         <exclude>uk/gov/justice/api/resource/*Resource.class</exclude>
                         <exclude>org/drools/compiler/lang/DRL6Lexer*</exclude>
                         <exclude>org/drools/compiler/lang*</exclude>
+                        <exclude>org/drools/drl/parser/lang/DRL6Lexer*</exclude>
+                        <exclude>org/drools/drl/parser/lang*</exclude>
                     </excludes>
                 </configuration>
             </plugin>
@@ -578,8 +586,7 @@
                             <dependency>
                                 <groupId>javax.xml.bind</groupId>
                                 <artifactId>jaxb-api</artifactId>
-                                <!-- TODO move this version to somewhere sensible -->
-                                <version>2.3.1</version>
+                                <version>${jaxb-api.version}</version>
                             </dependency>
                         </dependencies>
                     </plugin>
@@ -620,8 +627,8 @@
                                 <version>${cpp.framework.version}</version>
                             </dependency>
                             <dependency>
-                                <groupId>javax</groupId>
-                                <artifactId>javaee-api</artifactId>
+                                <groupId>jakarta.platform</groupId>
+                                <artifactId>jakarta.jakartaee-api</artifactId>
                                 <version>${javaee-api.version}</version>
                                 <scope>runtime</scope>
                             </dependency>
@@ -670,8 +677,8 @@
                                 <version>${cpp.framework.version}</version>
                             </dependency>
                             <dependency>
-                                <groupId>javax</groupId>
-                                <artifactId>javaee-api</artifactId>
+                                <groupId>jakarta.platform</groupId>
+                                <artifactId>jakarta.jakartaee-api</artifactId>
                                 <version>${javaee-api.version}</version>
                                 <scope>runtime</scope>
                             </dependency>
@@ -741,8 +748,8 @@
                                 <version>${cpp.framework.version}</version>
                             </dependency>
                             <dependency>
-                                <groupId>javax</groupId>
-                                <artifactId>javaee-api</artifactId>
+                                <groupId>jakarta.platform</groupId>
+                                <artifactId>jakarta.jakartaee-api</artifactId>
                                 <version>${javaee-api.version}</version>
                                 <scope>runtime</scope>
                             </dependency>
@@ -1016,8 +1023,8 @@
                         </executions>
                         <dependencies>
                             <dependency>
-                                <groupId>javax</groupId>
-                                <artifactId>javaee-api</artifactId>
+                                <groupId>jakarta.platform</groupId>
+                                <artifactId>jakarta.jakartaee-api</artifactId>
                                 <version>${javaee-api.version}</version>
                                 <scope>runtime</scope>
                             </dependency>
