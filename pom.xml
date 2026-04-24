@@ -290,6 +290,25 @@
 
                 <plugin>
                     <groupId>uk.gov.justice.schema</groupId>
+                    <artifactId>effective-json-schema-maven-plugin</artifactId>
+                    <version>${framework-libraries.version}</version>
+                    <executions>
+                        <execution>
+                            <id>generate-effective-json-schemas</id>
+                            <configuration>
+                                <sourceDirectory>${schema.generation.source.directory}</sourceDirectory>
+                                <outputDirectory>${project.build.directory}/effective-json-schemas</outputDirectory>
+                            </configuration>
+                            <goals>
+                                <goal>generate-effective-json-schemas</goal>
+                            </goals>
+                            <phase>process-sources</phase>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>uk.gov.justice.schema</groupId>
                     <artifactId>catalog-generation-plugin</artifactId>
                     <version>${framework-libraries.version}</version>
 
@@ -491,6 +510,20 @@
                                     <goal>generate-schema-catalog</goal>
                                 </goals>
                                 <phase>generate-sources</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>uk.gov.justice.schema</groupId>
+                        <artifactId>effective-json-schema-maven-plugin</artifactId>
+                        <version>${framework-libraries.version}</version>
+                        <executions>
+                            <execution>
+                                <id>generate-effective-json-schemas</id>
+                                <goals>
+                                    <goal>generate-effective-json-schemas</goal>
+                                </goals>
+                                <phase>process-sources</phase>
                             </execution>
                         </executions>
                     </plugin>
