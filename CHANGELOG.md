@@ -6,6 +6,29 @@ on [Keep a CHANGELOG](http://keepachangelog.com/).
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+# [17.104.2] - 2026-03-31
+## Changed
+- Update platform-libraries to 17.104.2 for:
+  - framework-stream-rest-resources dependency is added to expose `/internal` endpoints
+
+### [17.104.1]  - 2026-03-25
+## Added
+- Update platform-libraries to 17.104.1-M2
+- Update event-store to 17.104.1-M2 for:
+  - Notification-based event linking and publishing via CDI events, enabled via JNDI:
+    - event.linking.worker.notified (linking)
+    - event.publishing.worker.notified (publishing)
+  - Bug fixes: dead notifier thread recovery, submit() failure handling
+### Changed
+- Update platform-libraries to 17.104.1-M1
+- Update event-store to 17.104.1-M1 for:
+  - Batch event linking: `EventNumberLinker` now links N events per JTA transaction using JDBC `executeBatch()`,
+    configurable via JNDI `event.linking.worker.batch.size` (default 10)
+
+## [21.0.0-SNAPSHOT] - 2026-04-14
+### Changed
+- Bumped version to `21.0.0-SNAPSHOT` for Java 21 / WildFly 34 migration
+- Updated parent `cpp-platform-libraries-parent-pom` to `21.0.0-SNAPSHOT`
 
 # [17.105.0-M13] - 2026-04-02
 ### Changed
