@@ -6,6 +6,12 @@ on [Keep a CHANGELOG](http://keepachangelog.com/).
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [25.104.0-M1] - 2026-06-10
+### Changed
+- Updated parent `cpp-platform-libraries` to `25.104.0-M1`
+- Updated `cpp.service-common-resources.version` to `25.104.0-M1`
+
 # [17.104.2] - 2026-03-31
 ## Changed
 - Update platform-libraries to 17.104.2 for:
