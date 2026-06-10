@@ -3,13 +3,13 @@
     <parent>
         <groupId>uk.gov.moj.platform.libraries</groupId>
         <artifactId>platform-libraries-parent-pom</artifactId>
-        <version>21.0.0-M1-SNAPSHOT</version>
+        <version>25.104.0-M1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>uk.gov.moj.cpp.common</groupId>
     <artifactId>service-parent-pom</artifactId>
-    <version>21.0.0-M1-SNAPSHOT</version>
+    <version>25.104.0-M1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>CPP Service Parent POM</name>
@@ -32,8 +32,10 @@
 
         <cpp.scm.project>cpp.platform.maven.service-parent-pom</cpp.scm.project>
 
-        <cpp.service-common-resources.version>21.0.0-M1-SNAPSHOT</cpp.service-common-resources.version>
+        <cpp.service-common-resources.version>25.104.0-M1</cpp.service-common-resources.version>
         <activiti.library.version>1.3.1</activiti.library.version>
+        <!-- Pinned to pre-EE9 version: generator plugins use javax.xml.bind.* (via raml-parser) which is only present in jakarta.xml.bind-api 2.x. DO NOT upgrade. -->
+        <jakarta.xml.bind-api.raml.version>2.3.2</jakarta.xml.bind-api.raml.version>
 
     </properties>
 
@@ -665,6 +667,11 @@
                                 <version>${javaee-api.version}</version>
                                 <scope>runtime</scope>
                             </dependency>
+                            <dependency>
+                                <groupId>jakarta.xml.bind</groupId>
+                                <artifactId>jakarta.xml.bind-api</artifactId>
+                                <version>${jakarta.xml.bind-api.raml.version}</version>
+                            </dependency>
                         </dependencies>
                     </plugin>
                     <plugin>
@@ -714,6 +721,11 @@
                                 <artifactId>jakarta.jakartaee-api</artifactId>
                                 <version>${javaee-api.version}</version>
                                 <scope>runtime</scope>
+                            </dependency>
+                            <dependency>
+                                <groupId>jakarta.xml.bind</groupId>
+                                <artifactId>jakarta.xml.bind-api</artifactId>
+                                <version>${jakarta.xml.bind-api.raml.version}</version>
                             </dependency>
                         </dependencies>
                     </plugin>
@@ -785,6 +797,11 @@
                                 <artifactId>jakarta.jakartaee-api</artifactId>
                                 <version>${javaee-api.version}</version>
                                 <scope>runtime</scope>
+                            </dependency>
+                            <dependency>
+                                <groupId>jakarta.xml.bind</groupId>
+                                <artifactId>jakarta.xml.bind-api</artifactId>
+                                <version>${jakarta.xml.bind-api.raml.version}</version>
                             </dependency>
 
                         </dependencies>
@@ -1060,6 +1077,11 @@
                                 <artifactId>jakarta.jakartaee-api</artifactId>
                                 <version>${javaee-api.version}</version>
                                 <scope>runtime</scope>
+                            </dependency>
+                            <dependency>
+                                <groupId>jakarta.xml.bind</groupId>
+                                <artifactId>jakarta.xml.bind-api</artifactId>
+                                <version>${jakarta.xml.bind-api.raml.version}</version>
                             </dependency>
                             <dependency>
                                 <groupId>uk.gov.justice.framework-generators</groupId>
