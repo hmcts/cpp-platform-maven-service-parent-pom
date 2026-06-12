@@ -3,7 +3,7 @@
     <parent>
         <groupId>uk.gov.moj.platform.libraries</groupId>
         <artifactId>platform-libraries-parent-pom</artifactId>
-        <version>25.104.0-M1</version>
+        <version>25.104.0-M2</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -36,6 +36,9 @@
         <activiti.library.version>1.3.1</activiti.library.version>
         <!-- Pinned to pre-EE9 version: generator plugins use javax.xml.bind.* (via raml-parser) which is only present in jakarta.xml.bind-api 2.x. DO NOT upgrade. -->
         <jakarta.xml.bind-api.raml.version>2.3.2</jakarta.xml.bind-api.raml.version>
+        <!-- JSON-P provider for messaging-adapter-generator-plugin classpath; glassfish jakarta.json is an
+             OSGi bundle that suppresses ServiceLoader registration, so parsson is required explicitly. -->
+        <parsson.version>1.1.7</parsson.version>
 
     </properties>
 
@@ -727,6 +730,11 @@
                                 <artifactId>jakarta.xml.bind-api</artifactId>
                                 <version>${jakarta.xml.bind-api.raml.version}</version>
                             </dependency>
+                            <dependency>
+                                <groupId>org.eclipse.parsson</groupId>
+                                <artifactId>parsson</artifactId>
+                                <version>${parsson.version}</version>
+                            </dependency>
                         </dependencies>
                     </plugin>
                     <plugin>
@@ -1092,6 +1100,11 @@
                                 <groupId>uk.gov.justice.services</groupId>
                                 <artifactId>event-subscription</artifactId>
                                 <version>${cpp.framework.version}</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.eclipse.parsson</groupId>
+                                <artifactId>parsson</artifactId>
+                                <version>${parsson.version}</version>
                             </dependency>
                         </dependencies>
                     </plugin>
