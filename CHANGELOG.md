@@ -7,7 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-## [25.104.0-M2] - 2026-06-18
+## [25.104.0-M3] - 2026-06-18
 ### Changed
 - Updated parent `cpp-platform-libraries` to `25.104.0-M3`
 
