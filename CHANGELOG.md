@@ -6,6 +6,16 @@ on [Keep a CHANGELOG](http://keepachangelog.com/).
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+# [17.103.10] - 2026-03-31
+## Changed
+- Update platform-libraries to 17.103.10 for:
+  - framework-stream-rest-resources dependency is added to expose `/internal` endpoints
+
+# [17.103.9] - 2026-03-24
+## Changed
+- event-store bumped to 17.103.8-M2 to Notification-based event linking and publishing via CDI events, enabled via JNDI:
+  - pre.publish.worker.notified (linking)
+  - event.publishing.worker.notified (publishing)
 
 # [17.103.8] - 2025-12-09
 ### Changed
