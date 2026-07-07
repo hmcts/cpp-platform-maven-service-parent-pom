@@ -7,7 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-### [17.104.1]  - 2026-03-25
+### [17.104.4]  - 2026-07-07
 ### Changed
 - Update platform-libraries to 17.104.4 to fix json-smart problem
 
