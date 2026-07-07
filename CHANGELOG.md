@@ -6,6 +6,8 @@ on [Keep a CHANGELOG](http://keepachangelog.com/).
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [25.104.0-M6] - 2026-07-07
 ### Changed
 - Updated parent `platform-libraries-parent-pom` to `25.104.0-M7` — brings `framework.version` `25.104.0-M3`, `event-store.version` `25.104.0-M4`, and `cpp.platform-libraries.version` `25.104.0-M7`, whose event-listener service-component now delivers `persistence-jpa` (the event-stream self-healing `EntityManagerFlushInterceptor` + `EntityManagerProducer`) into consuming context services' event-listener WARs
 
