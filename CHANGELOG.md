@@ -7,6 +7,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [25.104.0-M8] - 2026-07-28
+### Changed
+- Bumped parent `platform-libraries-parent-pom` to `25.104.0-M9` — brings the Elasticsearch **9.2.2** client migration and the full released framework chain (`cpp.platform-libraries.version` M9, `cpp.common-bom.version` M3, `framework.version` M4, `framework-libraries.version` M11, `event-store.version` M5, `file-service.version` M7), including jackson `2.21.5` (**CVE-2026-54515**), the junit-bom import, and the event-store `EntityManagerFlushInterceptor` presence guard, down to consuming context services.
+- Bumped `cpp.service-common-resources.version` to `25.104.0-M2` — picks up platform parent-pom M2 (jacoco 0.8.14 / maven-shade 3.6.0 / buildnumber fix).
+
 ## [25.104.0-M6] - 2026-07-07
 ### Changed
 - Updated parent `platform-libraries-parent-pom` to `25.104.0-M7` — brings `framework.version` `25.104.0-M3`, `event-store.version` `25.104.0-M4`, and `cpp.platform-libraries.version` `25.104.0-M7`, whose event-listener service-component now delivers `persistence-jpa` (the event-stream self-healing `EntityManagerFlushInterceptor` + `EntityManagerProducer`) into consuming context services' event-listener WARs
