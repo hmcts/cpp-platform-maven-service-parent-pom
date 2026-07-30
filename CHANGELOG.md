@@ -7,6 +7,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [25.104.0-M9] - 2026-07-30
+### Changed
+- Bumped parent `platform-libraries-parent-pom` `25.104.0-M9` → `25.104.0-M10` — brings the Elasticsearch **9.2.2 → 9.3.3** dependency-management bump down to consuming context services (via `cpp.common-bom.version` M3 → M4 and `cpp.platform-libraries.version` M9 → M10). API-compatible: both ES contexts (unifiedsearch-query, applications-courtorders) pass their full IT suites against a 9.3.3 client on a live 9.3.3 stack, with no source changes.
+
 ## [25.104.0-M8] - 2026-07-28
 ### Changed
 - Bumped parent `platform-libraries-parent-pom` to `25.104.0-M9` — brings the Elasticsearch **9.2.2** client migration and the full released framework chain (`cpp.platform-libraries.version` M9, `cpp.common-bom.version` M3, `framework.version` M4, `framework-libraries.version` M11, `event-store.version` M5, `file-service.version` M7), including jackson `2.21.5` (**CVE-2026-54515**), the junit-bom import, and the event-store `EntityManagerFlushInterceptor` presence guard, down to consuming context services.
