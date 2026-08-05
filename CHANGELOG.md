@@ -7,6 +7,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [25.104.0-M10] - 2026-08-05
+### Changed
+- Bumped parent `platform-libraries-parent-pom` `25.104.0-M10` → `25.104.0-M11` — brings the Apache Artemis client bump `2.53.0` → `2.54.0` (via common-bom M7) down to consuming context services, matching the Artemis `2.54.0` broker in `cpp-developers-docker`.
+
 ## [25.104.0-M9] - 2026-07-30
 ### Changed
 - Bumped parent `platform-libraries-parent-pom` `25.104.0-M9` → `25.104.0-M10` — brings the Elasticsearch **9.2.2 → 9.3.3** dependency-management bump down to consuming context services (via `cpp.common-bom.version` M3 → M4 and `cpp.platform-libraries.version` M9 → M10). API-compatible: both ES contexts (unifiedsearch-query, applications-courtorders) pass their full IT suites against a 9.3.3 client on a live 9.3.3 stack, with no source changes.
