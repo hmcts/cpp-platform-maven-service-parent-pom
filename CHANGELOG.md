@@ -7,9 +7,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-## [25.104.0-M10] - 2026-08-05
+## [25.104.0] - 2026-09-08
+First official (non-milestone) release of the Java 25 / WildFly 40 / Jakarta EE 11 line,
+consolidating milestones `25.104.0-M1` to `25.104.0-M10`. This is the pom every context
+service inherits from, so it is what carries the whole released `25.104.0` stack down to
+the contexts.
+
 ### Changed
-- Bumped parent `platform-libraries-parent-pom` `25.104.0-M10` → `25.104.0-M11` — brings the Apache Artemis client bump `2.53.0` → `2.54.0` (via common-bom M7) down to consuming context services, matching the Artemis `2.54.0` broker in `cpp-developers-docker`.
+- Bumped parent `platform-libraries-parent-pom` to the released `25.104.0`, bringing the entire released chain down to consuming context services: Java 25 / Jakarta EE 11 targeting (`compiler.release=25`, `enforcer.java.version.range=[25,)`), the Jakarta EE 11 API set, WildFly `40.0.0.Final`, Weld 6, RESTEasy 7, Hibernate ORM 6, Apache Artemis `2.54.0` under the new `org.apache.artemis` groupId (matching the `2.54.0` broker in `cpp-developers-docker`), Elasticsearch `9.3.3`, `liquibase.version=5.0.3`, Jackson `2.21.5` (**CVE-2026-54515**), the `org.junit:junit-bom` import, jacoco `0.8.14` / maven-shade `3.6.0`, the `persistence-jpa` event-stream self-healing `EntityManagerFlushInterceptor` delivered into event-listener WARs, and the event-store `EntityManagerFlushInterceptorPresenceVerifier` deploy-guard
+- Bumped `cpp.service-common-resources.version` to the released `25.104.0`
 
 ## [25.104.0-M9] - 2026-07-30
 ### Changed
