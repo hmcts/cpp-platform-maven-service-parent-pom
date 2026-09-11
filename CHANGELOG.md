@@ -5,7 +5,10 @@ on [Keep a CHANGELOG](http://keepachangelog.com/).
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [25.104.1] - 2026-09-11
+### Changed
+- Updated the parent `platform-libraries-parent-pom` to 25.104.1 to take the changes from it
+- Updated `service-common-resources` to 25.104.1
 
 ## [25.104.0] - 2026-09-08
 First official (non-milestone) release of the Java 25 / WildFly 40 / Jakarta EE 11 line,
