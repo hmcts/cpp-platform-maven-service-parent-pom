@@ -5,6 +5,10 @@ on [Keep a CHANGELOG](http://keepachangelog.com/).
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [25.104.2] - 2026-09-15
+### Changed
+- Updated the parent `platform-libraries-parent-pom` to 25.104.2, bringing the 25.104.3 framework chain and parent-pom 25.104.4. Contexts on this parent get `liquibase-postgres-compatibility` shaded into their Liquibase jars, versioned from `framework-libraries-bom`, which restores Liquibase 4's handling of the MySQL-only `afterColumn` hint on PostgreSQL.
+
 ## [25.104.1] - 2026-09-11
 ### Changed
 - Updated the parent `platform-libraries-parent-pom` to 25.104.1 to take the changes from it
