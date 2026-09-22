@@ -7,6 +7,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [17.104.5] - 2026-09-22
+### Changed
+- Upgraded Elasticsearch to 9.2.2
+
 ### [17.104.4]  - 2026-07-07
 ### Changed
 - Update platform-libraries to 17.104.4 to fix json-smart problem
