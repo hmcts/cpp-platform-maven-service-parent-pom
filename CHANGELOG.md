@@ -5,6 +5,16 @@ on [Keep a CHANGELOG](http://keepachangelog.com/).
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+
+## [25.104.3] - 2026-09-28
+### Changed
+- Updated the parent `platform-libraries-parent-pom` to 25.104.3, which brings `common-bom` 25.104.3, `framework-libraries`,
+  `framework` and `event-store` 25.104.4 and `file-service` 25.104.2. They carry the September 2026 security updates
+  (netty 4.1.138, httpcore5 5.4.4 with httpclient5 5.6.4, postgresql 42.7.13, micrometer 1.16.7, log4j 2.25.5,
+  plexus-utils 3.6.2, azure-storage-blob 12.27.1) and the context-pinned versions moved into the common-bom
+  (lombok 1.18.40, jaxb-runtime 4.0.6, camunda 7.24.0, mapstruct, HikariCP and others)
+
 ## [25.104.2] - 2026-09-15
 ### Changed
 - Updated the parent `platform-libraries-parent-pom` to 25.104.2, bringing the 25.104.3 framework chain and parent-pom 25.104.4. Contexts on this parent get `liquibase-postgres-compatibility` shaded into their Liquibase jars, versioned from `framework-libraries-bom`, which restores Liquibase 4's handling of the MySQL-only `afterColumn` hint on PostgreSQL.
