@@ -7,6 +7,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [25.104.4] - 2026-10-02
+### Changed
+- Updated the parent `platform-libraries-parent-pom` to 25.104.4, which brings `common-bom` 25.104.4 and `parent-pom` 25.104.5
+
+### Removed
+- This project's `.ci-hooks/fixup-versions` script. It edited a `cpp.service-parent-pom.version` property that this pom does not declare, so every release ran `xmlstarlet` against a node that was not there. It has never had any effect. The hook machinery in `parent-pom` is unchanged and still used by `cpp-platform-libraries`.
+
 ## [25.104.3] - 2026-09-28
 ### Changed
 - Updated the parent `platform-libraries-parent-pom` to 25.104.3, which brings `common-bom` 25.104.3, `framework-libraries`,
