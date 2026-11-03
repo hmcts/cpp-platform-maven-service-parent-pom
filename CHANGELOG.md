@@ -7,6 +7,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [25.104.6] - 2026-11-03
+### Changed
+- Update platform-libraries to 25.104.6, with framework 25.104.6 and event-store 25.104.6: a failed fetch of the
+  Features from Azure App Configuration no longer silently disables every feature, and a failed refresh keeps the
+  previously cached Features ([PEG-3655](https://hmcts.atlassian.net/browse/PEG-3655))
+
 ## [25.104.5] - 2026-10-28
 ### Security
 - Updated the parent `platform-libraries-parent-pom` to 25.104.5, which brings `common-bom` 25.104.5, `file-service`
