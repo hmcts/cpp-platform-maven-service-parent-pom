@@ -7,6 +7,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [17.104.6] - 2026-11-03
+### Changed
+- Update platform-libraries to 17.104.6, with framework 17.104.1 and event-store 17.104.2: a failed fetch of the
+  Features from Azure App Configuration no longer silently disables every feature, and a failed refresh keeps the
+  previously cached Features ([PEG-3655](https://hmcts.atlassian.net/browse/PEG-3655))
+
 ## [17.104.5] - 2026-09-22
 ### Changed
 - Upgraded Elasticsearch to 9.2.2
