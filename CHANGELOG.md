@@ -7,6 +7,19 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [25.104.7] - 2026-11-09
+### Changed
+- Updated the parent `platform-libraries-parent-pom` to 25.104.7, which brings `common-bom` 25.104.6, `file-service`
+  25.104.4, `framework-libraries` 25.104.6, and `framework` and `event-store` 25.104.7. These move Hibernate ORM from
+  6.6.1.Final to 7.3.2.Final, the version WildFly 40.0.1 ships
+- platform-libraries 25.104.7 adds the `cpp.activiti.historyLevel` property
+  ([PEG-3497](https://hmcts.atlassian.net/browse/PEG-3497))
+
+### Fixed
+- platform-libraries 25.104.7: Activiti job-executor work (timer jobs, `activiti:async` steps) runs in a JTA
+  transaction again, as on Java 17, so a failed job no longer keeps its partial writes and JMS sends
+  ([PEG-3680](https://hmcts.atlassian.net/browse/PEG-3680))
+
 ## [25.104.6] - 2026-11-03
 ### Changed
 - Update platform-libraries to 25.104.6, with framework 25.104.6 and event-store 25.104.6: a failed fetch of the
